@@ -3,18 +3,23 @@ function getFSUrl() {
 }
 
 function goToFS() {
-   chrome.tabs.create({url: getFSUrl()});
+   chrome.tabs.create({"url": getFSUrl()});
 }
 
 function update() {
    $.get(getFSUrl(),
-      function (data) {
-         results = $(".link:has(.flair-ditto)", data);
-         if (results.length > 0) {
-            chrome.browserAction.setBadgeText({text: results.length.toString()});
-         } else {
-            chrome.browserAction.setBadgeText({text: ""});
-         }
+      function (page) {
+         this.page = page;
+         var root = this;
+         chrome.storage.sync.get("tracked", function (store) {
+            subselector = store["tracked"].map(function (elem) { return ".flair-" + elem; }).toString();
+            results = $(".link:has("+subselector+")", root.page);
+            if (results.length > 0) {
+               chrome.browserAction.setBadgeText({"text": results.length.toString()});
+            } else {
+               chrome.browserAction.setBadgeText({"text": ""});
+            }
+         });
       });
 };
 
