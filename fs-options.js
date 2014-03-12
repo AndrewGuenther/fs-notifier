@@ -3,8 +3,9 @@ function fs_li_add(name) {
 }
 
 function fs_add() {
-   window.fs_tracked.push($("#add-text").val());
-   fs_li_add($("#add-text").val());
+   var new_item = $("#add-text").val().toLowerCase()
+   window.fs_tracked.push(new_item);
+   fs_li_add(new_item);
    chrome.storage.sync.set({"tracked": window.fs_tracked});
    $("#add-text").val("");
 }

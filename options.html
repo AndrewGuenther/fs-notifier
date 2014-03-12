@@ -2,21 +2,28 @@
    <head>
       <title>Options - FS Notifier</title>
       <style>
-         li {display: table-row}
-         li > * {display: table-cell}
-         li > span {padding-right: 50px;}
-         #tracking {padding-left: 0px; list-style-type: none;}
+         body {
+            width: 500px;
+            margin: auto;
+         }
+         li > span {float: left}
+         li > a {float: right}
+         li {clear: both}
+         input {width: 100%}
+         #tracking {
+            padding-left: 0px;
+            list-style-type: none;
+         }
       </style>
    </head>
    <body>
-      <div>
+      <h1>Friend Safari Notifier</h1>
+      <p>
          Add any specific Pokemon or types here that you would like to track on
          r/friendsafari.
-      </div>
-      <input id="add-text" type="text"></input>
-      <button id="add-button">Add</button>
-      <ul id="tracking">
-      </ul>
+      <p>
+      <input id="add-text" type="text" placeholder="Enter Pokemon or type here..."></input>
+      <ul id="tracking"></ul>
    </body>
    <script src="jquery.js"></script>
    <script src="fs-options.js"></script>
