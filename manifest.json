@@ -23,5 +23,12 @@
    "background": {
       "scripts": ["jquery.js", "fs-notifier.js"],
       "persistent": false
-   }
+   },
+
+   "content_scripts": [
+      {
+         "matches": ["http://www.reddit.com/r/friendsafari/new"],
+         "js": ["jquery.js", "fs-filter.js"]
+      }
+   ]
 }
