@@ -38,9 +38,16 @@ chrome.browserAction.onClicked.addListener(goToFS);
 chrome.alarms.onAlarm.addListener(update);
 chrome.runtime.onInstalled.addListener(
    function () {
+      chrome.storage.sync.get(null,
+         function (store) {
+            if (!("tracked" in store)) { store["tracked"] = ["ditto"]; }
+            if (!("last-observed" in store)) { store["last-observed"] = 0;}
+            chrome.storage.sync.set(store);
+         });
       chrome.alarms.create("fs-notifier", {
          when: Date.now(),
          periodInMinutes: 5
       });
+      chrome.tabs.create({"url": "options.html"});
    }
 );
