@@ -3,6 +3,7 @@ function getFSUrl() {
 }
 
 function goToFS() {
+   chrome.storage.sync.set({"last-observed": Date.now()});
    chrome.browserAction.setBadgeText({"text": ""});
    chrome.tabs.create({"url": getFSUrl()});
 }
