@@ -4,7 +4,7 @@
    "name": "Friend Safari Notifier",
    "author": "Andrew Guenther",
    "description": "Get notified when a friend safari of interest is posted to r/friendsafari",
-   "version": "1.1",
+   "version": "1.1.1",
 
    "icons": {
       "16": "icon.png",
